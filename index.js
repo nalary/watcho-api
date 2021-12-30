@@ -18,7 +18,10 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 });
 
 app.use(express.json());
-app.use(cors);
+app.use(cors({
+    credentials:true,
+    origin: "https://watcho.vercel.app/"
+}));
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
